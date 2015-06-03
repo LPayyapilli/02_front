@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=0.5'>
+    <link rel="stylesheet" href="main.css"></link>
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#" id="landing">
+                        Middle.co
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="dashboard">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#" id="signup" data-target="#signupDiv">Signup</a>
+                </li>
+                <li>
+                    <a href="#" id="login" data-target="#loginDiv">Login</a>
+                </li>
+                <li>
+                    <a href="#" id="about">About</a>
+                </li>
+                <li>
+                    <a href="#" id="contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div id="signupDiv" style="display:none" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="signupDiv" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input id="firstnameform" placeholder="First Name">
+                        <input id="lastnameform" placeholder="Last Name">
+                        <input id="passwordform" placeholder="Password">
+                        <input id="usernameform" placeholder="Username">
+                        <input id="emailform" placeholder="Email">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="signupbutton"class="btn btn-primary">Signup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="loginDiv" style="display:none" class="modal fade" id="loginDiv" style="display:none" tabindex="-1" role="dialog" aria-labelledby="loginDiv" aria-hidden="true" data-toggle>
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input id="emailform" placeholder="Email">
+                        <input id="passwordformer" placeholder="Password">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" id="loginbutton"class="btn btn-primary">login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="aboutDiv" style="display:none">About</div>
+        <div id="contactDiv" style="display:none">Contact</div>
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>Middle.co</h1>
+                            <p>This is a story of a boy who loved house...music.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <script src="bower_components/jquery/dist/jquery.js"></script>
+            <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="bower_components/bootstrap/dist/css/bootstrap.css"></script>
+
+            <!-- <script src="bower_components/handlebars/handlebars.js"></script> -->
+            <!-- <script src='node_modules/ramjet/src/ramjet.js'></script> -->
+            <script src="app.js"></script>
+
+
+        </body>
+        </html>

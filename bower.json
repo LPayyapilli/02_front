@@ -1,0 +1,20 @@
+{
+  "name": "middle",
+  "version": "0.0.1",
+  "homepage": "https://github.com/LPayyapilli/_02_front",
+  "authors": [
+    "LPayyapilli <luke.payyapilli@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.4"
+  }
+}
