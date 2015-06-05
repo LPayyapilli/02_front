@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
 
@@ -9,170 +10,170 @@ $(document).ready(function() {
     $("#page-content-wrapper").hide();
 
 
+
   }
-  function showDiv(divName) {
-      if (divName) {
-        hideAll();
-        $("#" + divName).show();
-      }
+// Show function
+function showDiv(divName) {
+  if (divName) {
+    hideAll();
+    $("#" + divName).show();
   }
+}
 
-   $("#signup").click(function(){showDiv("signupDiv");});
-   $("#login").click(function(){showDiv("loginDiv");});
-   $("#about").click(function(){showDiv("aboutDiv");});
-   $("#contact").click(function(){showDiv("contactDiv");});
+// Sign Up click event
+$('#signup').click(function(){
+  $('#signupDiv').modal('show');});
 
+// Log In click event
+$('#login').click(function(){
+  $('#loginDiv').modal('show');});
 
-   $('#landing').click(function(){
-    location.reload();
-   });
+// About click event
+$("#about").click(function(){showDiv("aboutDiv");});
 
+//contact click event
+$("#contact").click(function(){showDiv("contactDiv");});
 
-  $("#signupbutton").click(function(){
-    var username = $("#usernameform").val();
-    var password1 = $("#passwordform").val();
-    var first_name = $("#firstnameform").val();
-    var last_name = $("#lastnameform").val();
-    var password = $("#passwordform").val();
-    var info = {user: {username: username,
-          email: email,
-          password1: password,
-          first_name: first_name,
-          last_name: last_name}}
+//image click event
+$("#imgbutton").click(function(){
+  var fd = new FormData();
+  fd.append('name',$('#imgname').val());
+  fd.append('image', $('#imgupload')[0].files[0]);
+
+  $.ajax({
+    url: 'http://localhost:3000/pictures',
+    type: "POST",
+    headers: {Authorization: 'Token token=' + localStorage['token']},
+    data: fd,
+    contentType: false,
+    processData: false,
+    cache: false
+  })
+  .done(function(response) {
+    console.log(response);
+  })
+  .fail(function() {
+    console.log("error");
+  });
+});
+
+// reload function event(refresh the page)
+$('#landing').click(function(){
+  location.reload();
+});
+
+// sign up form function and ajax request
+$("#signupbutton").click(function(){
+  var username = $("#usernameform").val();
+  var password = $("#passwordform").val();
+  var first_name = $("#firstnameform").val();
+  var last_name = $("#lastnameform").val();
+  var email = $("#emailform").val();
+  var info = {user: {username: username,
+    email: email,
+    password: password,
+    first_name: first_name,
+    last_name: last_name}}
 
     $.ajax({url: 'http://localhost:3000/signup',
       type: "POST",
       contentType: "application/json",
       dataType: "json",
       data: JSON.stringify(info)
-      }).done(function(data){
-        console.log(data);
-      }).fail(function(error){
-        console.log('error in login ' + error);
-    });
-  });
-
-
-  $("#loginbutton").click(function(){
-    var email = $("#emailform").val();
-    var password = $("#passwordformer").val();
-
-    $.ajax({ url: 'http://localhost:3000/login',
-      type: "POST",
-      contentType: "application/json",
-      dataType: "json",
-      data: JSON.stringify({
-          credentials: {
-            email: email,
-            password: password
-          }
-          })
     }).done(function(data){
-      console.log(data);
-
+      $('#signupDiv').modal('hide');
     }).fail(function(error){
       console.log('error in login ' + error);
     });
   });
 
+// log in form function and ajax request
+$("#loginbutton").click(function(){
+  var email = $("#emailformer").val();
+  var password = $("#passwordformer").val();
 
+  $.ajax({ url: 'http://localhost:3000/login',
+    type: "POST",
+    contentType: "application/json",
+    dataType: "json",
+    data: JSON.stringify({
+      credentials: {
+        email: email,
+        password: password
+      }
+    })
+  }).done(function(data){
+    $('#loginDiv').modal('hide');
+    renderUserData(data);
+    localStorage.setItem('token', data.token);
+    $('#buttonnav').show();
+    $('#userDiv').show();
+
+
+// getUserPicAjax(data.id);
+}).fail(function(error){
+  console.log('error in login ' + error);
+});
+});
+
+// Display all pics from the user
+$("#displaybutton").click(function(){
+  $.ajax({
+    url: 'http://localhost:3000/pictures',
+    type: "GET",
+    headers: {Authorization: 'Token token=' + localStorage['token']}})
+  .done(function(data) {
+    renderUserPics(data);
+  })
+  .fail(function() {
+    console.log("error");
+  });
+});
+var deleteUserPic = function(id) {
+  $("img[data-id='" + id + "']").remove();
+};
+
+// Delete action for selected picture
+$("#deletebutton").click(function(){
+  var id = localStorage['selectedPic'];
+  $.ajax({
+    url: 'http://localhost:3000/pictures/' + id,
+    headers: {Authorization: 'Token token=' + localStorage['token']},
+    type: 'DELETE',
+    dataType: 'json'
+  })
+  .done(function(data) {
+    deleteUserPic(id);
+    localStorage.removeItem("token");
+  })
+  .fail(function() {
+    console.log("error");
+  });
+
+});
+
+// render user data and append to the div
+var renderUserData = function(data) {
+  $('#welcomename').html("Hello, " + data.name);
+  $('#userDiv').html();
+}
+// render user pics and append to the div
+var renderUserPics = function(data) {
+  data.pictures.forEach(function(picture){
+    $('#userDiv').append(picture.url);
+  });
+}
+
+
+
+// select specific user pic by clicking on pic
+$('#userDiv').on('click', '.picture', function(event){
+  localStorage.setItem('selectedPic', $(this).data('id'));
+});
 
 
 
 });
-
-  // $("#session-destroy").on('click',function(){
-
-  //   $.ajax().done().fail();
-  // });
-
-
-  // $("#user-index").on('click',function(){
-  //   $.ajax({
-  //     url: 'localhost:3000/users',
-  //     type: 'GET'
-  //   }).done(function(data){
-  //     $("#content").html();     // Empty the 'content' div
-  //     data = JSON.parse(data);  // Parse the JSON we get from our API
-  //     data.forEach(function(user){ // Write HTML to our 'content' div for each user
-  //       $("#content").append("<p>" + data + "</p>")
-  //     });
-  //   }).fail(function(err){
-  //     console.error(err);
-  //   });
-  // })
-
-
-
-  // $("#user-show").on('click',function(){
-  //   $.ajax({
-  //     url: 'localhost:3000/users/1',
-  //     type: 'GET'
-  //   }).done(function(data){
-  //     $("#content").html();     // Empty the 'content' div
-  //     user = JSON.parse(data);  // Parse the JSON we get from our API
-  //     $("#content").append("<p>" + user.username + "</p>");
-  //   }).fail(function(err){
-  //     console.error(err);
-  //   });
-  // })
-
-
-
-  // $("#user-create").on('click',function(){
-  //   $.ajax(
-
-  //   ).done(function(data){
-
-  //   }).fail(function(err){
-
-  //   })
-  // })
-  // $("#user-update").on('click',function(){
-  //   $.ajax(
-
-  //   ).done(function(data){
-
-  //   }).fail(function(err){
-
-  //   })
-  // })
-  // $("#user-destroy").on('click',function(){
-  //   $.ajax(
-
-  //   ).done(function(data){
-
-  //   }).fail(function(err){
-
-  //   })
-  // })
-  // $("#photo-create").on('click',function(){
-  //   $.ajax(
-
-  //   ).done(function(data){
-
-  //   }).fail(function(err){
-
-  //   })
-  // })
-  // $("#photo-update").on('click',function(){
-  //   $.ajax(
-
-  //   ).done(function(data){
-
-  //   }).fail(function(err){
-
-  //   })
-  // })
-  // $("#photo-destroy").on('click',function(){
-  //   $.ajax(
-
-  //   ).done(function(data){
-
-  //   }).fail(function(err){
-
-  //   })
-  // })
 
 
 

@@ -1,9 +1,16 @@
+#userDiv {
+
+
+}
 #wrapper {
+    background-color: rgba(0,0,0,0);
+    z-index: 1;
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+
 }
 
 #wrapper.toggled {
@@ -30,6 +37,7 @@
 }
 
 #page-content-wrapper {
+
     width: 100%;
     position: absolute;
     padding: 15px;
@@ -88,7 +96,7 @@
     background: none;
 }
 
-@media(min-width:768px) {
+@media(min-width: 0px) {
     #wrapper {
         padding-left: 250px;
     }
