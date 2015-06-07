@@ -1,120 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=0.5'>
-    <link rel="stylesheet" href="main.css"></link>
+  <title></title>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=0.5'>
+  <link rel="stylesheet" href="main.css"></link>
 </head>
 <body>
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#" id="landing">
-                        Middle.co
-                    </a>
-                </li>
-                <li>
-                    <a href="#" id="dashboard">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" id="signup" data-target="#signupDiv">Signup</a>
-                </li>
-                <li>
-                    <a href="#" id="login" data-target="#loginDiv">Login</a>
-                </li>
-                <li>
-                    <a href="#" id="about">About</a>
-                </li>
-                <li>
-                    <a href="#" id="contact">Contact</a>
-                </li>
-            </ul>
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#" id="landing">
+            Middle.co
+          </a>
+        </li>
+        <li>
+          <a href="#" id="dashboard">Dashboard</a>
+        </li>
+        <li>
+          <a href="#" id="signup" data-target="#signupDiv">Signup</a>
+        </li>
+        <li>
+          <a href="#" id="login" data-target="#loginDiv">Login</a>
+        </li>
+        <li>
+          <a href="#" id="about">About</a>
+        </li>
+        <li>
+          <a href="#" id="contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+    <div id="signupDiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="signupDiv" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+          </div>
+          <div class="modal-body">
+            <input id="firstnameform" placeholder="First Name">
+            <input id="lastnameform" placeholder="Last Name">
+            <input id="usernameform" placeholder="Username">
+            <input id="passwordform" placeholder="Password">
+            <input id="emailform" placeholder="Email">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="signupbutton"class="btn btn-primary">Signup</button>
+          </div>
         </div>
-        <div id="signupDiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="signupDiv" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Sign up</h4>
-                    </div>
-                    <div class="modal-body">
-                        <input id="firstnameform" placeholder="First Name">
-                        <input id="lastnameform" placeholder="Last Name">
-                        <input id="usernameform" placeholder="Username">
-                        <input id="passwordform" placeholder="Password">
-                        <input id="emailform" placeholder="Email">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" id="signupbutton"class="btn btn-primary">Signup</button>
-                    </div>
-                </div>
+      </div>
+    </div>
+    <div id="loginDiv" class="modal fade" id="loginDiv" tabindex="-1" role="dialog" aria-labelledby="loginDiv" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Log In</h4>
+          </div>
+          <div class="modal-body">
+            <input id="emailformer" placeholder="Email">
+            <input id="passwordformer" type="password" placeholder="Password">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" id="loginbutton"class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="backdrop">
+    <div id="aboutDiv" style="display:none">
+      <br>About</br>
+      This was started as a way to help people upload pictures of their space available for artists, musicians, and creatives of all types to create hype for themselves and increase their audience. Welcome to Middle.co. Embrace your audience.
+    </div>
+    <div id="contactDiv" style="display:none">
+      <br>Contact</br>
+      <br>Copyright Luke Payyapilli 2015</br>
+      <br>Email:luke.payyapilli@gmail.com</br>
+    </div>
+    </div>
+    <div id="backdrop">
+    <div id="page-content-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>Middle.co</h1>
+            <h2 id="welcomename"></h2>
             </div>
-        </div>
-        <div id="loginDiv" class="modal fade" id="loginDiv" tabindex="-1" role="dialog" aria-labelledby="loginDiv" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Log In</h4>
-                    </div>
-                    <div class="modal-body">
-                        <input id="emailformer" placeholder="Email">
-                        <input id="passwordformer" type="password" placeholder="Password">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" id="loginbutton"class="btn btn-primary">Login</button>
-                    </div>
+
+            <div class="col-sm-6 col-sm-offset-2 col-md-6 col-md-offset-2 main">
+            <div id="buttonnav" style="display:none">
+              <input id="imgupload" placeholder="Upload Image Here" type="file">
+              <input id="imgname" type="text">
+              <button id="imgbutton">Submit</button>
+              <button id="displaybutton">Display Pics</button>
+              <button id="deletebutton">Delete</button></div>
+
+
+                <div id="userDiv" style="display:none">
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-        <div id="aboutDiv" style="display:none">
-        <br>About</br>
-        This was started as a way to help people upload pictures of their space available for artists, musicians, and creatives of all types to create hype for themselves and increase their audience. Welcome to Middle.co. Embrace your audience.
-        </div>
-        <div id="contactDiv" style="display:none">
-        <br>Contact</br>
-        <br>Copyright Luke Payyapilli 2015</br>
-        <br>Email:luke.payyapilli@gmail.com</br>
-        </div>
-            <div id="page-content-wrapper">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h1>Middle.co</h1>
-                            <h2 id="welcomename"></h2>
-                                <div id="buttonnav" style="display:none">
-                                <input id="imgupload" placeholder="Upload Image Here" type="file">
-                                    <input id="imgname" type="text">
-                                    <button id="imgbutton">Submit</button>
-                                    <button id="displaybutton">Display Pics</button>
-                                    <button id="deletebutton">Delete</button></div>
-                                <div id="userDiv" >
-                                </div>
-                            <p>This is a story of a boy who loved house...music.</p>
+      </div>
+    </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script> -->
 
 
+    <!-- <script src="bower_components/handlebars/handlebars.js"></script> -->
+    <!-- <script src='node_modules/ramjet/src/ramjet.js'></script> -->
+    <script src="app.js"></script>
 
 
-            <script src="bower_components/jquery/dist/jquery.js"></script>
-            <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-            <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-            <!-- <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script> -->
-
-
-            <!-- <script src="bower_components/handlebars/handlebars.js"></script> -->
-            <!-- <script src='node_modules/ramjet/src/ramjet.js'></script> -->
-            <script src="app.js"></script>
-
-
-        </body>
-        </html>
+  </body>
+  </html>

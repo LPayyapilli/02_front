@@ -1,18 +1,16 @@
-
+var token;
 $(document).ready(function() {
 
+// hide all divs
+function hideAll() {
+  $('#loginDiv').hide();
+  $('#signupDiv').hide();
+  $('#aboutDiv').hide();
+  $('#contactDiv').hide();
+  $("#page-content-wrapper").hide();
+}
 
-  function hideAll() {
-    $('#loginDiv').hide();
-    $('#signupDiv').hide();
-    $('#aboutDiv').hide();
-    $('#contactDiv').hide();
-    $("#page-content-wrapper").hide();
-
-
-
-  }
-// Show function
+// show function
 function showDiv(divName) {
   if (divName) {
     hideAll();
@@ -20,21 +18,25 @@ function showDiv(divName) {
   }
 }
 
+// reload function event(refresh the page)
+$('#landing').click(function(){
+  location.reload();
+});
 // Sign Up click event
 $('#signup').click(function(){
-  $('#signupDiv').modal('show');});
-
+  $('#signupDiv').modal('show');
+});
 // Log In click event
 $('#login').click(function(){
-  $('#loginDiv').modal('show');});
-
+  $('#loginDiv').modal('show');
+});
 // About click event
-$("#about").click(function(){showDiv("aboutDiv");});
-
+$("#about").click(function(){showDiv("aboutDiv");
+});
 //contact click event
-$("#contact").click(function(){showDiv("contactDiv");});
-
-//image click event
+$("#contact").click(function(){showDiv("contactDiv");
+});
+//image click event and ajax request
 $("#imgbutton").click(function(){
   var fd = new FormData();
   fd.append('name',$('#imgname').val());
@@ -55,11 +57,6 @@ $("#imgbutton").click(function(){
   .fail(function() {
     console.log("error");
   });
-});
-
-// reload function event(refresh the page)
-$('#landing').click(function(){
-  location.reload();
 });
 
 // sign up form function and ajax request
@@ -91,7 +88,6 @@ $("#signupbutton").click(function(){
 $("#loginbutton").click(function(){
   var email = $("#emailformer").val();
   var password = $("#passwordformer").val();
-
   $.ajax({ url: 'http://localhost:3000/login',
     type: "POST",
     contentType: "application/json",
@@ -103,17 +99,18 @@ $("#loginbutton").click(function(){
       }
     })
   }).done(function(data){
+    var token = data.token;
     $('#loginDiv').modal('hide');
+    localStorage.setItem('token', data['token']);
     renderUserData(data);
-    localStorage.setItem('token', data.token);
+
     $('#buttonnav').show();
     $('#userDiv').show();
+    $('#comment').show();
 
-
-// getUserPicAjax(data.id);
-}).fail(function(error){
-  console.log('error in login ' + error);
-});
+  }).fail(function(error){
+    console.log('error in login ' + error);
+  });
 });
 
 // Display all pics from the user
@@ -123,15 +120,14 @@ $("#displaybutton").click(function(){
     type: "GET",
     headers: {Authorization: 'Token token=' + localStorage['token']}})
   .done(function(data) {
+     $('#userDiv').empty();
     renderUserPics(data);
   })
   .fail(function() {
     console.log("error");
   });
 });
-var deleteUserPic = function(id) {
-  $("img[data-id='" + id + "']").remove();
-};
+
 
 // Delete action for selected picture
 $("#deletebutton").click(function(){
@@ -144,13 +140,18 @@ $("#deletebutton").click(function(){
   })
   .done(function(data) {
     deleteUserPic(id);
-    localStorage.removeItem("token");
   })
   .fail(function() {
     console.log("error");
   });
-
 });
+
+// select specific user pic by clicking on pic
+$('#userDiv').on('click', '.picture', function(event){
+  localStorage.setItem('selectedPic', $(this).data('id'));
+  });
+
+
 
 // render user data and append to the div
 var renderUserData = function(data) {
@@ -160,23 +161,14 @@ var renderUserData = function(data) {
 // render user pics and append to the div
 var renderUserPics = function(data) {
   data.pictures.forEach(function(picture){
-    $('#userDiv').append(picture.url);
+    $('#userDiv').add(picture.url).prependTo($('#userDiv'));
   });
 }
-
-
-
-// select specific user pic by clicking on pic
-$('#userDiv').on('click', '.picture', function(event){
-  localStorage.setItem('selectedPic', $(this).data('id'));
-});
-
+// delete image data with image id
+var deleteUserPic = function(id) {
+  $("img[data-id='" + id + "']").remove();
+};
 
 
 });
-
-
-
-
-
 
