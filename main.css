@@ -4,16 +4,6 @@
     padding: 10px;
     border-radius: 25px;
 }
-#comment {
-    position: relative;
-    margin-left: 400px;
-}
-#aboutDiv {
-    z-index: 1;
-}
-#contactDiv {
-    z-index: 1;
-}
 #backdrop {
     z-index: -1;
     background: url(http://i.imgur.com/bZbrGJ8.jpg) no-repeat center center fixed;
