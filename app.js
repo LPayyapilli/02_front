@@ -17,7 +17,7 @@ function hideAll() {
 // show function
 function showDiv(divName) {
   if (divName) {
-    middle.hideAll();
+    hideAll();
     $("#" + divName).show();
   }
 }
@@ -108,7 +108,7 @@ $("#loginbutton").click(function(){
     var token = data.token;
     $('#loginDiv').modal('hide');
     localStorage.setItem('token', data['token']);
-    middle.renderUserData(data);
+    renderUserData(data);
 
     $('#buttonnav').show();
     $('#userDiv').show();
@@ -127,7 +127,7 @@ $("#displaybutton").click(function(){
     headers: {Authorization: 'Token token=' + localStorage['token']}})
   .done(function(data) {
      $('#userDiv').empty();
-    middle.renderUserPics(data);
+    renderUserPics(data);
   })
   .fail(function() {
     console.log("error");
@@ -145,7 +145,7 @@ $("#deletebutton").click(function(){
     dataType: 'json'
   })
   .done(function(data) {
-    middle.deleteUserPic(id);
+    deleteUserPic(id);
   })
   .fail(function() {
     console.log("error");
