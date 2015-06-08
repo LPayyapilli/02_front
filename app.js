@@ -1,22 +1,26 @@
+var Middle = Middle || {};
+
+var middle = Middle.new;
+
 var token;
 $(document).ready(function() {
 
-// hide all divs
-function hideAll() {
-  $('#loginDiv').hide();
-  $('#signupDiv').hide();
-  $('#aboutDiv').hide();
-  $('#contactDiv').hide();
-  $("#page-content-wrapper").hide();
-}
+// // hide all divs
+// function hideAll() {
+//   $('#loginDiv').hide();
+//   $('#signupDiv').hide();
+//   $('#aboutDiv').hide();
+//   $('#contactDiv').hide();
+//   $("#page-content-wrapper").hide();
+// }
 
-// show function
-function showDiv(divName) {
-  if (divName) {
-    hideAll();
-    $("#" + divName).show();
-  }
-}
+// // show function
+// function showDiv(divName) {
+//   if (divName) {
+//     middle.hideAll();
+//     $("#" + divName).show();
+//   }
+// }
 
 // reload function event(refresh the page)
 $('#landing').click(function(){
@@ -104,7 +108,7 @@ $("#loginbutton").click(function(){
     var token = data.token;
     $('#loginDiv').modal('hide');
     localStorage.setItem('token', data['token']);
-    renderUserData(data);
+    middle.renderUserData(data);
 
     $('#buttonnav').show();
     $('#userDiv').show();
@@ -123,7 +127,7 @@ $("#displaybutton").click(function(){
     headers: {Authorization: 'Token token=' + localStorage['token']}})
   .done(function(data) {
      $('#userDiv').empty();
-    renderUserPics(data);
+    middle.renderUserPics(data);
   })
   .fail(function() {
     console.log("error");
@@ -141,7 +145,7 @@ $("#deletebutton").click(function(){
     dataType: 'json'
   })
   .done(function(data) {
-    deleteUserPic(id);
+    middle.deleteUserPic(id);
   })
   .fail(function() {
     console.log("error");
@@ -155,21 +159,21 @@ $('#userDiv').on('click', '.picture', function(event){
 
 
 
-// render user data and append to the div
-var renderUserData = function(data) {
-  $('#welcomename').html("Hello, " + data.name);
-  $('#userDiv').html();
-}
-// render user pics and append to the div
-var renderUserPics = function(data) {
-  data.pictures.forEach(function(picture){
-    $('#userDiv').add(picture.url).prependTo($('#userDiv'));
-  });
-}
-// delete image data with image id
-var deleteUserPic = function(id) {
-  $("img[data-id='" + id + "']").remove();
-};
+// // render user data and append to the div
+// var renderUserData = function(data) {
+//   $('#welcomename').html("Hello, " + data.name);
+//   $('#userDiv').html();
+// }
+// // render user pics and append to the div
+// var renderUserPics = function(data) {
+//   data.pictures.forEach(function(picture){
+//     $('#userDiv').add(picture.url).prependTo($('#userDiv'));
+//   });
+// }
+// // delete image data with image id
+// var deleteUserPic = function(id) {
+//   $("img[data-id='" + id + "']").remove();
+// };
 
 
 });
