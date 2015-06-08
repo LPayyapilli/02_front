@@ -1,6 +1,6 @@
-var Middle = Middle || {};
+// var Middle = Middle || {};
 
-var middle = Middle.new;
+// var middle = Middle.new;
 
 var token;
 $(document).ready(function() {
