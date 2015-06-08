@@ -105,9 +105,8 @@ $("#loginbutton").click(function(){
       }
     })
   }).done(function(data){
-    var token = data.token;
     $('#loginDiv').modal('hide');
-    localStorage.setItem('token', data['token']);
+    var token = localStorage.setItem('token', data['token']);
     middle.renderUserData(data);
 
     $('#buttonnav').show();
