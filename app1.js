@@ -35,6 +35,7 @@ var deleteUserPic = function(id) {
 
 return {
   hideAll: hideAll,
+  showDiv: showDiv,
   renderUserData: renderUserData,
   renderUserPics: renderUserPics,
   deleteUserPic: deleteUserPic
