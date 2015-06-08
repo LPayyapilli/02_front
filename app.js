@@ -31,10 +31,12 @@ $('#login').click(function(){
   $('#loginDiv').modal('show');
 });
 // About click event
-$("#about").click(function(){showDiv("aboutDiv");
+$("#about").click(function(){
+  $('#aboutDiv').modal('show');
 });
 //contact click event
-$("#contact").click(function(){showDiv("contactDiv");
+$("#contact").click(function(){
+  $('#contactDiv').modal('show');
 });
 //image click event and ajax request
 $("#imgbutton").click(function(){
