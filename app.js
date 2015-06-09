@@ -49,7 +49,7 @@ $("#imgbutton").click(function(){
   fd.append('image', $('#imgupload')[0].files[0]);
 
   $.ajax({
-    url: 'http://dry-springs-2973.herokuapp.com/pictures',
+    url: 'https://dry-springs-2973.herokuapp.com/pictures',
     type: "POST",
     headers: {Authorization: 'Token token=' + localStorage['token']},
     data: fd,
@@ -78,7 +78,7 @@ $("#signupbutton").click(function(){
     first_name: first_name,
     last_name: last_name}}
 
-    $.ajax({url: 'http://dry-springs-2973.herokuapp.com/signup',
+    $.ajax({url: 'https://dry-springs-2973.herokuapp.com/signup',
       type: "POST",
       contentType: "application/json",
       dataType: "json",
@@ -94,7 +94,7 @@ $("#signupbutton").click(function(){
 $("#loginbutton").click(function(){
   var email = $("#emailformer").val();
   var password = $("#passwordformer").val();
-  $.ajax({ url: 'http://dry-springs-2973.herokuapp.com/login',
+  $.ajax({ url: 'https://dry-springs-2973.herokuapp.com/login',
     type: "POST",
     contentType: "application/json",
     dataType: "json",
@@ -121,7 +121,7 @@ $("#loginbutton").click(function(){
 // Display all pics from the user
 $("#displaybutton").click(function(){
   $.ajax({
-    url: 'http://dry-springs-2973.herokuapp.com/pictures',
+    url: 'https://dry-springs-2973.herokuapp.com/pictures',
     type: "GET",
     headers: {Authorization: 'Token token=' + localStorage['token']}})
   .done(function(data) {
@@ -138,7 +138,7 @@ $("#displaybutton").click(function(){
 $("#deletebutton").click(function(){
   var id = localStorage['selectedPic'];
   $.ajax({
-    url: 'http://dry-springs-2973.herokuapp.com/pictures/' + id,
+    url: 'https://dry-springs-2973.herokuapp.com/pictures/' + id,
     headers: {Authorization: 'Token token=' + localStorage['token']},
     type: 'DELETE',
     dataType: 'json'
