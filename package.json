@@ -1,0 +1,39 @@
+{
+  "name": "02_front",
+  "version": "1.0.0",
+  "description": "Middle.co version 1.0 06/13/2015 Luke Payyapilli 2015 (luke.payyapilli@gmail.com) This program is to allow people to create an account and store images of their journey through life. Additional features include:  -creating posts  -displaying posts  -deleting posts New features to be added include: -creating captions -updating/deleting captions -newsfeed and followers for users to browse Basic Installation Requirements: None (all functionality through the web) Copyright Luke Payyapilli 2015",
+  "main": "app.js",
+  "dependencies": {
+    "bower": "^1.4.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-blanket": "0.0.8",
+    "grunt-concurrent": "^1.0.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-istanbul": "^0.5.0",
+    "grunt-jasmine-nodejs": "^1.4.0",
+    "grunt-jsbeautifier": "^0.2.10",
+    "grunt-jscs": "^1.8.0",
+    "grunt-jsonlint": "^1.0.4",
+    "grunt-node-inspector": "^0.2.0",
+    "grunt-nodemon": "^0.4.0",
+    "grunt-open": "^0.2.3",
+    "grunt-plato": "^1.2.1",
+    "load-grunt-config": "^0.17.1",
+    "time-grunt": "^1.2.1"
+    },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LPayyapilli/02_front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LPayyapilli/02_front/issues"
+  },
+  "homepage": "https://github.com/LPayyapilli/02_front"
+}
