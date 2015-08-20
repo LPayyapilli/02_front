@@ -5,23 +5,6 @@
 var token;
 $(document).ready(function() {
 
-// // hide all divs
-// function hideAll() {
-//   $('#loginDiv').hide();
-//   $('#signupDiv').hide();
-//   $('#aboutDiv').hide();
-//   $('#contactDiv').hide();
-//   $("#page-content-wrapper").hide();
-// }
-
-// show function
-// function showDiv(divName) {
-//   if (divName) {
-//     middle.hideAll();
-//     $("#" + divName).show();
-//   }
-// }
-
 // reload function event(refresh the page)
 $('#landing').click(function(){
   location.reload();
@@ -155,25 +138,6 @@ $("#deletebutton").click(function(){
 $('#userDiv').on('click', '.picture', function(event){
   localStorage.setItem('selectedPic', $(this).data('id'));
   });
-
-
-
-// // render user data and append to the div
-// var renderUserData = function(data) {
-//   $('#welcomename').html("Hello, " + data.name);
-//   $('#userDiv').html();
-// }
-// // render user pics and append to the div
-// var renderUserPics = function(data) {
-//   data.pictures.forEach(function(picture){
-//     $('#userDiv').add(picture.url).prependTo($('#userDiv'));
-//   });
-// }
-// // delete image data with image id
-// var deleteUserPic = function(id) {
-//   $("img[data-id='" + id + "']").remove();
-// };
-
 
 });
 

@@ -1,5 +1,4 @@
-
-Middle.co version 1.0 06/13/2015
+PhotoShare version 1.0 06/13/2015
 Luke Payyapilli 2015 (luke.payyapilli@gmail.com)
 This program is to allow people to create an account and store images of their journey through life. Additional features include:
  -creating posts
